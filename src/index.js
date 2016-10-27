@@ -6,6 +6,7 @@ import Layout from './components/Layout'
 import HomePage from './components/HomePage'
 import AllClients from './components/AllClients'
 import AllProperties from './components/AllProperties'
+import Finance from './components/Finance'
 
 render(
   <Router history={browserHistory}>
@@ -14,6 +15,7 @@ render(
       <IndexRoute component={HomePage} />
       <Route path="/clients" component={AllClients} />
       <Route path="/properties" component={AllProperties} />
+      <Route path="/finance" component={Finance} />
     </Route>
 
   </Router>,

@@ -2,6 +2,24 @@ import axios from 'axios'
 import ServerActions from './actions/ServerActions'
 
 const API = {
+  getFinances () {
+    axios.get('/api/finances')
+      .then(res => {
+        let data = res.data
+        ServerActions.receiveFinances(data)
+      })
+      .catch(console.error)
+  },
+
+  addClient (newClient) {
+    axios.put('/api/clients', newClient)
+      .then(res => {
+        let data = res.data
+        ServerActions.receiveAllClients(data)
+      })
+      .catch(console.error)
+  },
+
   getAllClients () {
     axios.get('/api/clients')
       .then(res => {
@@ -11,8 +29,8 @@ const API = {
       .catch(console.error)
   },
 
-  deleteClient () {
-    axios.get('/api/clients')
+  deleteClient (id) {
+    axios.delete(`/api/clients/${id}`)
       .then(res => {
         let data = res.data
         ServerActions.receiveAllClients(data)
@@ -29,8 +47,8 @@ const API = {
       .catch(console.error)
   },
 
-  deleteProperty () {
-    axios.get('/api/properties')
+  deleteProperty (id) {
+    axios.delete(`/api/properties/${id}`)
       .then(res => {
         let data = res.data
         ServerActions.receiveAllProperties(data)

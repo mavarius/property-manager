@@ -3,15 +3,12 @@ import React, { Component } from 'react'
 import PropertyStore from '../stores/PropertyStore'
 import PropertyActions from '../actions/PropertyActions'
 
-// import Property from './Property'
-import PropertyList from './PropertyList'
-
-export default class AllProperties extends Component {
+export default class Finance extends Component {
   constructor () {
     super()
 
     this.state = {
-      properties: PropertyStore.getAll()
+      finances: PropertyStore.getFinances()
     }
 
     this._onChange = this._onChange.bind(this)
@@ -19,7 +16,7 @@ export default class AllProperties extends Component {
 
   componentWillMount () {
     PropertyStore.on('CHANGE', this._onChange)
-    PropertyActions.getAll()
+    PropertyActions.getFinances()
   }
 
   componentWillUnmount () {
@@ -28,27 +25,20 @@ export default class AllProperties extends Component {
 
   _onChange () {
     this.setState({
-      properties: PropertyStore.getAll()
+      finances: PropertyStore.getFinances()
     })
   }
 
-  _addNewProperty (e) {
-    e.preventDefault()
-
-    let newRoom = {
-      propertyName: e.target.propertyName.value.toString(),
-      description: e.target.description.value.toString()
-    }
-
-    PropertyActions.addProperty(newRoom)
-    PropertyActions.getAll()
-  }
-
   render () {
+    const { finances } = this.state
     return (
       <div className="container">
         <div className="row list">
-          <PropertyList {...this.state} />
+          <div className="financeCard">
+            <h1>Total Properties: {finances.totalRooms}</h1>
+            <h1>Total Tenants: {finances.totalRented}</h1>
+            <h1>Montly Income: ${finances.monthlyIncome}</h1>
+          </div>
         </div>
       </div>
     )

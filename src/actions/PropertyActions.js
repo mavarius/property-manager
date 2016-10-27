@@ -8,6 +8,10 @@ const PropertyActions = {
 
   deleteProperty (id) {
     API.deleteProperty(id)
+  },
+
+  getFinances () {
+    API.getFinances()
   }
 }
 

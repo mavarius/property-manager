@@ -5,6 +5,8 @@ let _properties = []
 
 let _property = {}
 
+let _finances = {}
+
 class PropertyStore extends EventEmitter {
   constructor () {
     super()
@@ -19,6 +21,10 @@ class PropertyStore extends EventEmitter {
           _property = action.payload
           this.emit('CHANGE')
           break
+        case 'RECEIVE_FINANCES':
+          _finances = action.payload
+          this.emit('CHANGE')
+          break
       }
     })
   }
@@ -29,6 +35,10 @@ class PropertyStore extends EventEmitter {
 
   getProperty () {
     return _property
+  }
+
+  getFinances () {
+    return _finances
   }
 
 }

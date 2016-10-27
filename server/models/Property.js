@@ -12,7 +12,7 @@ const propertySchema = new mongoose.Schema({
   },
   contact: {
     email: { type: String },
-    phone: { type: Number }
+    phone: { type: String }
   },
   bedrooms: { type: Number },
   bathroms: { type: Number },
@@ -25,13 +25,35 @@ const propertySchema = new mongoose.Schema({
     gym: Boolean
   },
   baseRent: { type: Number },
-  photoUrl: { type: String }
-  // tenants: { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Client' }], validate: [arrayLimit, '{PATH} exceeds the limit of 10'] }
+  photoUrl: { type: String },
+  tenants: { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Client' }], validate: [arrayLimit, '{PATH} exceeds the limit of 10'] }
 })
 
-// function arrayLimit (tenants) {
-//   return tenants.length <= this.bedrooms * 2
-// }
+function arrayLimit (tenants) {
+  return tenants.length <= this.bedrooms * 2
+}
+
+propertySchema.statics.getFinances = function () {
+  return this.find()
+    .populate('tenants')
+    .then(properties => {
+      var finances = {
+        totalRooms: 0,
+        totalRented: 0,
+        monthlyIncome: 0
+      }
+
+      properties.forEach(property => {
+        finances.totalRooms += property.bedrooms
+        finances.totalRented += property.tenants.length
+        finances.monthlyIncome += property.tenants.reduce((total, tenant) => {
+          total += tenant.rentRate
+          return total
+        }, 0)
+      })
+      return finances
+    })
+}
 
 const Property = mongoose.model('Property', propertySchema)
 

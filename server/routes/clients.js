@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Client = require('../models/Client')
+const Property = require('../models/Property')
 
 router.route('/moveIn/:id')
   .put((req, res) => {
@@ -12,6 +13,14 @@ router.route('/moveIn/:id')
         client.calculateRent()
         return client.save()
       })
+      .then(
+        Property.findById(req.body.property)
+          .then(property => {
+            if (property.tenants.indexOf(req.params.id) === -1) property.tenants.push(req.params.id)
+            return property.save()
+          })
+          .catch(err => res.status(400).send(err))
+      )
       .then(savedClient => res.send(savedClient))
       .catch(err => res.status(400).send(err))
   })
@@ -19,7 +28,19 @@ router.route('/moveIn/:id')
 router.route('/moveOut/:id')
   .put((req, res) => {
     Client.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true })
+      .populate('property')
+      .then(
+        Property.findById(req.body.property)
+          .then(property => {
+            property.tenants = property.tenants.filter(id => req.params.id.toString() !== id.toString())
+            return property.save()
+          })
+          .catch(err => res.status(400).send(err))
+      )
       .then(client => {
+        client.property = {
+          _id: ''
+        }
         client.calculateRent()
         return client.save()
       })

@@ -45,7 +45,6 @@ export default class AllClients extends Component {
   }
 
   render () {
-    console.log('this.state.clients: ', this.state.clients)
     return (
       <div className="container">
         <div className="row list">

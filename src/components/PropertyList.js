@@ -46,6 +46,9 @@ let renderProperties = (properties) => {
           <div className="cardSection">
             <p>Ammenities: {ammenities(property.ammenities)}</p>
           </div>
+          <div className="cardSection">
+            <p>Capacity: {property.tenants ? property.tenants.length : 0} / {property.bedrooms * 2}</p>
+          </div>
           <button className="editBtn" onClick={() => editProperty()}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
           <button className="editBtn" onClick={() => deleteProperty(property._id)}><i className="fa fa-trash-o" aria-hidden="true"></i></button>
         </div>

@@ -8,6 +8,10 @@ const ClientActions = {
 
   deleteClient (id) {
     API.deleteClient(id)
+  },
+
+  addClient (newClient) {
+    API.addClient(newClient)
   }
 }
 

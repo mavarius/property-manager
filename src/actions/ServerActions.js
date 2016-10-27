@@ -13,6 +13,13 @@ const ServerActions = {
       type: 'RECEIVE_ALL_PROPERTIES',
       payload: data
     })
+  },
+
+  receiveFinances (data) {
+    AppDispatcher.dispatch({
+      type: 'RECEIVE_FINANCES',
+      payload: data
+    })
   }
 }
 
