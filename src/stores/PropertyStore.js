@@ -11,7 +11,7 @@ class PropertyStore extends EventEmitter {
 
     AppDispatcher.register(action => {
       switch (action.type) {
-        case 'RECEIVE_ALL':
+        case 'RECEIVE_ALL_PROPERTIES':
           _properties = action.payload
           this.emit('CHANGE')
           break

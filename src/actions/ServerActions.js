@@ -1,16 +1,16 @@
 import AppDispatcher from '../AppDispatcher'
 
 const ServerActions = {
-  receiveAll (data) {
+  receiveAllClients (data) {
     AppDispatcher.dispatch({
-      type: 'RECEIVE_ALL',
+      type: 'RECEIVE_ALL_CLIENTS',
       payload: data
     })
   },
 
-  receiveChatroom (data) {
+  receiveAllProperties (data) {
     AppDispatcher.dispatch({
-      type: 'RECEIVE_CHATROOM',
+      type: 'RECEIVE_ALL_PROPERTIES',
       payload: data
     })
   }

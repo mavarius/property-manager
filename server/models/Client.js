@@ -21,6 +21,16 @@ const clientSchema = new mongoose.Schema({
   property: { type: mongoose.Schema.Types.ObjectId, ref: 'Property' }
 })
 
+clientSchema.methods.updateAddress = function () {
+  this.address = this.property.address
+  return this.save()
+}
+
+clientSchema.methods.calculateRent = function () {
+  this.rentRate = (this.property.baseRent + (this.pets * 100)) || 0
+  return this.save()
+}
+
 const Client = mongoose.model('Client', clientSchema)
 
 module.exports = Client

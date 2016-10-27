@@ -25,13 +25,13 @@ const propertySchema = new mongoose.Schema({
     gym: Boolean
   },
   baseRent: { type: Number },
-  photoUrl: { type: String },
-  tenants: { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Client' }], validate: [arrayLimit, '{PATH} exceeds the limit of 10'] }
+  photoUrl: { type: String }
+  // tenants: { type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Client' }], validate: [arrayLimit, '{PATH} exceeds the limit of 10'] }
 })
 
-function arrayLimit (tenants) {
-  return tenants.length <= this.bedrooms * 2
-}
+// function arrayLimit (tenants) {
+//   return tenants.length <= this.bedrooms * 2
+// }
 
 const Property = mongoose.model('Property', propertySchema)
 

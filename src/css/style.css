@@ -1,0 +1,226 @@
+body {
+  font-family: 'Titillium Web', sans-serif;
+  transition: 0.5s all;
+}
+
+.backgroundImage {
+  position: fixed;
+  background-position: center;
+  height: 60vh;
+  width: 100vw;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+  /*filter: opacity(70%);*/
+}
+
+.container-fluid {
+  position: relative;
+  z-index: 50;
+  padding: 0;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.content {
+  /*margin-top: 30vh;*/
+}
+
+.bodyContent {
+  background-color: white;
+  z-index: 100;
+  min-height: 30vh;
+  padding-bottom: 10vh;
+}
+
+.link {
+  font-family: 'Cormorant SC', serif;
+  position: relative;
+  height: 50px;
+  padding-top: 9px;
+}
+
+.link .Link {
+  color: white;
+  font-size: 1.6em;
+}
+
+.splash {
+  text-align: center;
+  height: 60vh;
+}
+
+.appBadge {
+  background-color: rgba(17, 17, 17, 0.9);
+  border: 1px solid rgba(17, 17, 17, 1);
+  border-radius: 300px;
+  /*border: 10px solid rgba(255, 255, 255, 0.05);*/
+  width: 300px;
+  height: 300px;
+  position: relative;;
+  top: -150px;
+  margin: 0 auto;
+  left: -25px;
+  text-align: center;
+  padding-top: 158px;
+}
+
+.appTitle {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 5em;
+  color: white;
+}
+
+.appSubtitle {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  color: black;
+  position: relative;
+  font-size: 2em;
+  height: 40px;
+}
+
+.navBar {
+  background-color: rgba(17, 17, 17, 1);
+  width: 100vw;
+  height: 50px;
+  z-index: 70;
+}
+
+.searchArea {
+  height: 175px;
+  overflow: hidden;
+  top: -125px;
+  border-bottom: 1px solid rgba(17, 17, 17, 1);
+  pointer-events: none;
+}
+
+.searchBar {
+  background-color: rgba(17, 17, 17, 0.9);
+  border: 1px solid rgba(17, 17, 17, 1);
+  position: absolute;
+  width: 300px;
+  height: 298px;
+  border-radius: 300px;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 85px;
+  pointer-events: none;
+}
+
+.searchBlock {
+  width: 100%;
+  pointer-events: none;
+}
+
+.searchBar input {
+  font-size: 1.2em;
+  padding-left: 40px;
+  border: none;
+  width: 80%;
+  height: 50px;
+  float: left;
+  pointer-events: all;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.searchBtn {
+  color: rgba(17, 17, 17, 0.4);
+  background-color: white;
+  border: none;
+  font-size: 1.4em;
+  height: 50px;
+  width: 20%;
+  pointer-events: all;
+  transition: 0.5s all;
+}
+
+.serachBtn:hover {
+  color: rgba(17, 17, 17, 1);
+}
+
+button:focus {
+  outline: none;
+}
+
+.clientCard {
+  width: 100%;
+  border-left: 1px solid rgba(17, 17, 17, 1);
+  background-color: rgba(17, 17, 17, 0);
+  padding-left: 20px;
+  margin-bottom: 40px;
+  transition: 0.5s all;
+}
+
+.clientCard:hover {
+  background-color: rgba(17, 17, 17, 0.1);
+}
+
+.addBtn {
+  color: rgba(17, 17, 17, 0.5);
+  background-color: transparent;
+  font-size: 1.2em;
+  border: none;
+  transition: 0.5s all;
+}
+
+.addBtn:hover {
+  color: rgba(17, 17, 17, 1);
+  font-size: 1.4em;
+}
+
+.editBtn {
+  color: rgba(17, 17, 17, 0.2);
+  background-color: transparent;
+  font-size: 1.2em;
+  border: none;
+  transition: 0.5s all;
+}
+
+.editBtn:hover {
+  color: rgba(17, 17, 17, 1);
+}
+
+.editBtn:hover, .editBtn:focus {
+  outline: none;
+}
+
+.list {
+  clear: both;
+}
+
+.propertyImage {
+  height: 200px;
+  width: 100%;
+}
+
+.propertyImage > img {
+  object-fit: cover;
+  height: 200px;
+  width: 100%;
+}
+
+.propertyCard {
+  margin-bottom: 60px;
+}
+
+.cardSection {
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+  padding: 5px 0;
+}
+
+.footer {
+  text-align: center;
+  color: white;
+  background-color: rgba(17, 17, 17, 1);
+  height: 50px;
+  padding-top: 15px;
+  vertical-align: middle;
+}

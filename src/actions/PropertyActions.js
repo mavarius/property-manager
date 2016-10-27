@@ -3,7 +3,11 @@ import API from '../API'
 
 const PropertyActions = {
   getAll () {
-    API.getAll()
+    API.getAllProperties()
+  },
+
+  deleteProperty (id) {
+    API.deleteProperty(id)
   }
 }
 
